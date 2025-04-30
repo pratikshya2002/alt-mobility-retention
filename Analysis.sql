@@ -1,7 +1,7 @@
 select * from payments;
 select * from customerorders;
 -- 1. Order and Sales Analysis:
--- Monthly sales trend and fulfillment status breakdown
+
 SELECT
   DATE_FORMAT(order_date, '%Y-%m') as month,
   COUNT(order_id) AS total_orders,
@@ -11,6 +11,7 @@ SELECT
 FROM customerorders
 GROUP BY month
 ORDER BY month;
+
 -- 2. Customer Analysis:
 select customer_id,count(order_id) as ordercount
 from customerorders
@@ -23,7 +24,8 @@ select customer_id,
        from customerorders
        group by customer_id,month
        order by month desc;
--- Payment Status Analysis:(Payment status breakdown by month)
+
+-- Payment Status Analysis:(Payment status by month)
 select * from payments;
 select 
       date_format(payment_date,'%Y-%m') as month,
@@ -35,8 +37,7 @@ select
       order by month;
       
 -- 4. Order Details Report:
--- Create a comprehensive report that provides a detailed overview of order
--- information, payment details, and key metrics.
+
  select o.order_id, o.customer_id, o.order_date, o.order_amount, o.order_status,
  p.payment_id,p.payment_date,p.payment_amount,p.payment_method, p.payment_status
  FROM customerorders o 
@@ -70,20 +71,3 @@ SELECT
 FROM orders_with_cohort
 GROUP BY cohort_month, order_month
 ORDER BY cohort_month, order_month;
-
- 
- 
- 
- 
- 
- 
- 
-               
-
-  
-     
-
-       
-       
-
-
